@@ -15,6 +15,10 @@
 #define RAISE 2
 #define ADJUST 3
 
+&mt {
+    tapping-term-ms = <300>;
+};
+
 / {
     // Activate ADJUST layer by pressing raise and lower
 
@@ -25,10 +29,6 @@
             if-layers = <LOWER RAISE>;
             then-layer = <ADJUST>;
         };
-    };
-    
-    &mt {
-        tapping-term-ms = <300>;
     };
 
     keymap {
