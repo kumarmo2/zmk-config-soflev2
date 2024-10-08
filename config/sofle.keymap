@@ -15,7 +15,6 @@
 #define RAISE 2
 #define ADJUST 3
 
-&ht { tapping-term-ms = <350>; };
 
 / {
     // Activate ADJUST layer by pressing raise and lower
@@ -26,6 +25,17 @@
         adjust_layer {
             if-layers = <LOWER RAISE>;
             then-layer = <ADJUST>;
+        };
+    };
+
+     behaviors {
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
         };
     };
 
@@ -45,7 +55,7 @@
             bindings = <
 &kp GRAVE  &kp N1       &kp N2      &kp N3      &kp N4            &kp N5                               &kp N6   &kp N7            &kp N8      &kp N9      &kp N0          &kp LBKT
 &kp TAB    &kp Q        &kp W       &kp E       &kp R             &kp T                                &kp Y    &kp U             &kp I       &kp O       &kp P           &kp RBKT
-&kp ESC    &ht LCTRL A  &ht LGUI S  &ht LALT D  &ht LEFT_SHIFT F  &kp G                                &kp H    &ht LEFT_SHIFT J  &ht LALT K  &ht LGUI L  &ht LCTRL SEMI  &kp SQT
+&kp ESC    &hm LCTRL A  &hm LGUI S  &hm LALT D  &hm LEFT_SHIFT F  &kp G                                &kp H    &hm LEFT_SHIFT J  &hm LALT K  &hm LGUI L  &hm LCTRL SEMI  &kp SQT
 &kp LSHFT  &kp Z        &kp X       &kp C       &kp V             &kp B        &kp C_MUTE    &none     &kp N    &kp M             &kp COMMA   &kp DOT     &kp FSLH        &kp RSHFT
                         &kp LGUI    &kp LGUI    &kp LALT          &lt 1 SPACE  &kp LCTRL     &kp BSPC  &kp RET  &kp LALT          &kp BSPC    &kp RGUI
             >;
